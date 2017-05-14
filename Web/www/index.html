@@ -12,8 +12,10 @@
   </head>
   <body>
     <script type="text/javascript">
-      // Renderer code
-      var renderer, scene, camera, mesh, controls;
+      // Code du rendu 3D
+      var renderer, scene, camera, mesh;
+      var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
+      var dialogBoxes = {};
       
       initScene();
       animate();
@@ -38,29 +40,53 @@
         pointLight.position.set(10, 20, -10);
         scene.add(pointLight);
         
-        var jsonLoader = new THREE.ObjectLoader();
-        jsonLoader.load("teapot-claraio.json", function(geometry)
+        // Ajout du gros modèle 3D d'ADN
+        var jsonLoader = new THREE.JSONLoader();
+        jsonLoader.load("dna.json", function(geometry, materials)
           {
-            mesh = geometry;
+            mesh = new THREE.Mesh(geometry, materials[0]);
+            mesh.rotation.order = "ZXY";
             mesh.rotation.z = 0.5;
-            setupControls();
+            mesh.position.z = -100; // distance respectable, c'est que le modèle est plutôt gros
+            // setupControls();
             scene.add(mesh);
           });
-      }
-      
-      function setupControls()
-      {
-        controls = new THREE.TrackballControls(camera, renderer.domElement);
-        controls.rotateSpeed = 3.0;
-        controls.zoomSpeed = 1.2;
-        controls.panSpeed = 1.0;
-        controls.noZoom = false;
-        controls.noPan = false;
-        controls.staticMoving = false;
-        controls.dynamicDampingFactor = 0.3;
-        controls.minDistance = 1.1;
-        controls.maxDistance = 100;
-        controls.keys = [16, 17, 18];
+        
+        // Ajout de quelques boîtes cliquables pour les liens des pages
+        var g = new THREE.PlaneGeometry(20, 5);
+        var m = new THREE.MeshBasicMaterial({color:0xccccff, side: THREE.DoubleSide});
+        var frustum = new THREE.Frustum();
+        frustum.setFromMatrix(camera.projectionMatrix);
+        for(var i = 0; i < 3; i++)
+        {
+          dialogBoxes[i] = new THREE.Mesh(g, m);
+          dialogBoxes[i].name = "Box " + (i + 1);
+          var p = new THREE.Vector3();
+          do
+          {
+            p.set(Math.random() * 100 - 50, Math.random() * 100 - 50, -50);
+            
+          } while(!frustum.containsPoint(p) || !frustum.containsPoint(p.clone().add(20, 5, 0)));
+          dialogBoxes[i].position.set(p.x, p.y, p.z);
+          scene.add(dialogBoxes[i]);
+        }
+        // On fait en sorte que les boîtes réagissent au clic
+        renderer.domElement.addEventListener("mouseup", mouseup);
+        
+        function mouseup(event)
+        {
+          if(event.button == 0)
+          {
+            var mouse = new THREE.Vector2();
+            mouse.x = event.clientX / window.innerWidth * 2. - 1.;
+            mouse.y = -event.clientY / window.innerHeight * 2. + 1.;
+            raycaster.setFromCamera(mouse, camera);
+            var intersects = raycaster.intersectObjects(scene.children);
+            if(intersects !== [])
+              alert(intersects[0].object.name);
+          }
+        }
+        
       }
       
       function animate()
@@ -76,8 +102,6 @@
       function render()
       {
         camera.lookAt(scene.position);
-        if(controls)
-          controls.update();
         renderer.render(scene, camera);
       }
     </script>
