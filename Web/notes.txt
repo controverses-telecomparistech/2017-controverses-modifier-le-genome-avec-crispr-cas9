@@ -1,0 +1,4 @@
+- Page d'accueil WebGL : modèle 3D du génôme (double hélice) avec panels pointant vers les différentes composantes du modèle 3D pour afficher les liens des articles
+- Animation JS + CSS : TimeLine ? TweenLite ?
+- Chartes d'acteur, graphe des débats : D3.js
+- Rotation perpétuelle autour de l'axe de l'objet
