@@ -5,7 +5,7 @@
     <title>WebGL model renderer</title>
     <script src="three.min.js"></script>
     <style>
-      body { margin:0.; }
+      body { margin:0; }
       canvas { width:100%; height:100%; }
     </style>
   </head>
@@ -15,6 +15,9 @@
       var renderer, scene, camera, mesh;
       var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
       var dialogBoxes = [];
+      // Constantes pour la taille des boîtes cliquables
+      var box_width = 40, box_height = 10, box_depth = -50;
+      var box_bgcolor = 0x444444;
       
       initScene();
       animate();
@@ -39,6 +42,23 @@
         pointLight.position.set(10, 20, -10);
         scene.add(pointLight);
         
+        // Ajout d'un fond étoilé
+        var starsGeometry = new THREE.Geometry();
+
+        for(var i = 0; i < 10000; i++)
+        {
+
+          starsGeometry.vertices.push(new THREE.Vector3(
+            THREE.Math.randFloatSpread(2000),
+            THREE.Math.randFloatSpread(2000),
+            THREE.Math.randFloatSpread(2000))
+          );
+        }
+        
+        var starsMaterial = new THREE.PointsMaterial({ color:0x888888 });
+        var starField = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starField);
+        
         // Ajout du gros modèle 3D d'ADN
         var jsonLoader = new THREE.JSONLoader();
         jsonLoader.load("dna.json", function(geometry, materials)
@@ -52,19 +72,43 @@
           });
         
         // Ajout de quelques boîtes cliquables pour les liens des pages
-        var g = new THREE.PlaneGeometry(20, 5);
-        var m = new THREE.MeshBasicMaterial({color:0xccccff, side: THREE.DoubleSide});
+        // Boîte
+        var geom = new THREE.PlaneGeometry(box_width, box_height);
+        // Contour de la boîte
+        var outline_geom = new THREE.Geometry();
+        outline_geom.vertices.push(new THREE.Vector3(-box_width / 2, box_height / 2, 0));
+        outline_geom.vertices.push(new THREE.Vector3(box_width / 2, box_height / 2, 0));
+        outline_geom.vertices.push(new THREE.Vector3(box_width / 2, -box_height / 2, 0));
+        outline_geom.vertices.push(new THREE.Vector3(-box_width / 2, -box_height / 2, 0));
+        outline_geom.vertices.push(new THREE.Vector3(-box_width / 2, box_height / 2, 0));
+        // var mat = new THREE.MeshBasicMaterial({color:0x444444, side: THREE.DoubleSide});
+        var outline_mat = new THREE.LineBasicMaterial({color:0x4286f4, linewidth:5});
         var frustum = new THREE.Frustum();
         frustum.setFromMatrix(camera.projectionMatrix);
+        // On construit les Mesh des boîtes
+        // On va afficher le texte sur un canvas qui sera ensuite utilisé comme texture
+        var canvas = document.createElement("canvas");
+        canvas.width = box_width;
+        canvas.height = box_height;
+        var ctx = canvas.getContext("2d");
+        ctx.font = "30px Courier";
         for(var i = 0; i < 3; i++)
         {
-          dialogBoxes[i] = new THREE.Mesh(g, m);
-          dialogBoxes[i].name = "Box " + (i + 1);
+          dialogBoxes[i] = new THREE.Group()
+          ctx.fillStyle = "#444444";
+          ctx.fillRect(0, 0, box_width, box_height);
+          
+          var mat = new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas), side:THREE.DoubleSide});
+          var m = new THREE.Mesh(geom, mat);
+          m.name = "Box " + (i + 1);
+          dialogBoxes[i].add(m);
+          dialogBoxes[i].add(new THREE.Line(outline_geom, outline_mat));
           var p = new THREE.Vector3();
           do
           {
-            p.set(Math.random() * 100 - 50, Math.random() * 100 - 50, -50);
             
+            // léger écart en profondeur pour que les boîtes se chevauchent
+            p.set(Math.random() * 100 - 50, Math.random() * 100 - 50, -50 - i);
           } while(!frustum.containsPoint(p) || !frustum.containsPoint(p.clone().add(20, 5, 0)));
           dialogBoxes[i].position.set(p.x, p.y, p.z);
           scene.add(dialogBoxes[i]);
@@ -80,12 +124,11 @@
             mouse.x = event.clientX / window.innerWidth * 2. - 1.;
             mouse.y = -event.clientY / window.innerHeight * 2. + 1.;
             raycaster.setFromCamera(mouse, camera);
-            var intersects = raycaster.intersectObjects(dialogBoxes);
+            var intersects = raycaster.intersectObjects(dialogBoxes.map(group => group.children.filter(obj => obj.name.split(" ")[0] == "Box")[0]), true); // test récursif sur les descendants des objets
             if(intersects.length > 0)
               alert(intersects[0].object.name);
           }
         }
-        
       }
       
       function animate()
@@ -104,5 +147,16 @@
         renderer.render(scene, camera);
       }
     </script>
+    
+    <!-- Le texte des trois boîtes de dialogue sont dans des divs invisibles -->
+    <div class="dialogText" id="dialog1" hidden>
+    Ceci est l'article 1 ! Cliquez sur moi !
+    </div>
+    <div class="dialogText" id="dialog2" hidden>
+    Ceci est l'article 2 ! Cliquez plutôt sur moi,\n je suis bien mieux !
+    </div>
+    <div class="dialogText" id="dialog3" hidden>
+    Ceci est l'article 3 ! Je suis de loin le\nmeilleur article !
+    </div>
   </body>
 </html>
