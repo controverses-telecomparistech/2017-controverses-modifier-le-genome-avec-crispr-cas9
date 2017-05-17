@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>WebGL model renderer</title>
     <script src="three.min.js"></script>
+    <script src="ConnectorSegments.js"></script>
     <style>
       body { margin:0; }
       canvas { width:100%; height:100%; }
@@ -14,9 +15,9 @@
       // Code du rendu 3D
       var renderer, scene, camera, mesh;
       var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
-      var dialogBoxes = [];
+      var dialogBoxes = [], segments = []; // pour maintenir les ConnectorSegments et les mettre à jour
       // Constantes pour la taille des boîtes cliquables
-      var box_width = 40, box_height = 10, box_depth = -50;
+      var box_width = 40, box_height = 10, box_depth = -75;
       var box_bgcolor = 0x444444;
       
       initScene();
@@ -108,7 +109,7 @@
           {
             
             // léger écart en profondeur pour que les boîtes se chevauchent
-            p.set(Math.random() * 100 - 50, Math.random() * 100 - 50, -50 - i);
+            p.set(Math.random() * 100 - 50, Math.random() * 100 - 50, box_depth - i);
           } while(!frustum.containsPoint(p) || !frustum.containsPoint(p.clone().add(20, 5, 0)));
           dialogBoxes[i].position.set(p.x, p.y, p.z);
           scene.add(dialogBoxes[i]);
@@ -137,6 +138,16 @@
         if(mesh)
         {
           mesh.rotation.y += 0.02;
+          if(segments.length < 1)
+          {
+            for(var i = 0; i < dialogBoxes.length; i++)
+            {
+              var target = new THREE.Vector3(0, (i - 1) * 50, -100);
+              target.applyEuler(mesh.rotation);
+              segments[i] = new ConnectorSegments(dialogBoxes[i], target);
+              dialogBoxes[i].add(segments[i].object);
+            }
+          }
         }
         render();
       }
