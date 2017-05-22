@@ -11,9 +11,23 @@
     <style>
       body { margin:0; background-image:url("background.png"); }
       canvas { width:100%; height:100%; }
+      #cboxOverlay { visibility: visible; opacity: 0.5 !important; }
+      #cboxContent { opacity: 0.8; }
     </style>
   </head>
   <body>
+    <!-- Le texte des trois boîtes de dialogue sont dans une div invisible -->
+    <div style="display:none">
+      <a href="articles/article3.html" class="dialogText" id="Box1"></a>
+      <a href="articles/article2.html" class="dialogText" id="Box2"></a>
+      <a href="articles/article1.html" class="dialogText" id="Box3"></a>
+    </div>
+    
+    <script type="text/javascript">
+      // On configure les liens ci-dessus pour qu'ils ouvrent une pop-up au lieu de charger une page
+      $(".dialogText").colorbox({width:"75%", height:"100%", });
+    </script>
+    
     <script type="text/javascript">
       // Code du rendu 3D
       var renderer, scene, camera, mesh;
@@ -124,7 +138,11 @@
             // Test récursif sur les boîtes uniquement (objets dont les noms commencent par "Box")
             var intersects = raycaster.intersectObjects(dialogBoxes.map(group => group.children.filter(obj => obj.name.split(" ")[0] == "Box")[0]), true);
             if(intersects.length > 0)
-              alert(intersects[0].object.name);
+            {
+              var n = intersects[0].object.name.split(" ");
+              // alert(intersects[0].object.name);
+              document.getElementById("Box" + n[1]).click();
+            }
           }
         }
       }
@@ -168,16 +186,5 @@
         renderer.render(scene, camera);
       }
     </script>
-    
-    <!-- Le texte des trois boîtes de dialogue sont dans des divs invisibles -->
-    <a href="article1.html" class="dialogText" id="dialog1" hidden>
-    Ceci est l'article 1 ! Cliquez sur moi !
-    </div>
-    <a href="article2.html" class="dialogText" id="dialog2" hidden>
-    Ceci est l'article 2 ! Cliquez plutôt sur moi,\n je suis bien mieux !
-    </div>
-    <a href="article3.html" class="dialogText" id="dialog3" hidden>
-    Ceci est l'article 3 ! Je suis de loin le\nmeilleur article !
-    </div>
   </body>
 </html>
