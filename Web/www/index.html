@@ -6,7 +6,7 @@
     <script src="three.min.js"></script>
     <script src="ConnectorSegments.js"></script>
     <style>
-      body { margin:0; }
+      body { margin:0; background-image:url("background.png"); }
       canvas { width:100%; height:100%; }
     </style>
   </head>
@@ -19,13 +19,15 @@
       // Constantes pour la taille des boîtes cliquables
       var box_width = 40, box_height = 10, box_depth = -75;
       var box_bgcolor = 0x444444;
+      // Constate de la vitesse de rotation
+      var BOX_ROTATION_SPEED = 0.01;
       
       initScene();
       animate();
       
       function initScene()
       {
-        renderer = new THREE.WebGLRenderer({ antialias:true });
+        renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
         
@@ -109,7 +111,7 @@
           {
             
             // léger écart en profondeur pour que les boîtes se chevauchent
-            p.set(Math.random() * 100 - 50, Math.random() * 100 - 50, box_depth - i);
+            p.set(Math.random() * 30 - 15, Math.random() * 30  - 15 + (i - 1) * 50, box_depth - i);
           } while(!frustum.containsPoint(p) || !frustum.containsPoint(p.clone().add(20, 5, 0)));
           dialogBoxes[i].position.set(p.x, p.y, p.z);
           scene.add(dialogBoxes[i]);
@@ -137,16 +139,25 @@
         requestAnimationFrame(animate);
         if(mesh)
         {
-          mesh.rotation.y += 0.02;
+          mesh.rotation.y += BOX_ROTATION_SPEED;
           if(segments.length < 1)
           {
             for(var i = 0; i < dialogBoxes.length; i++)
             {
               var target = new THREE.Vector3(0, (i - 1) * 50, -100);
               target.applyEuler(mesh.rotation);
-              segments[i] = new ConnectorSegments(dialogBoxes[i], target);
+              segments[i] = new ConnectorSegments(dialogBoxes[i], target, 0);
+              segments[i].object.rotation.order = mesh.rotation.order;
               dialogBoxes[i].add(segments[i].object);
             }
+          }
+          // Il y a autant de ConnectorSegments que de dialogBoxes
+          for(var i = 0; i < dialogBoxes.length; i++)
+          {
+            dialogBoxes[i].position.sub(segments[i].target);
+            dialogBoxes[i].position.applyEuler(new THREE.Euler(0., BOX_ROTATION_SPEED, 0.));
+            dialogBoxes[i].position.add(segments[i].target);
+            segments[i].update();
           }
         }
         render();
