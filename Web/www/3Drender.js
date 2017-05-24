@@ -3,8 +3,8 @@ var renderer, scene, camera, mesh, mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
 var dialogBoxes = [], segments = []; // pour maintenir les ConnectorSegments et les mettre à jour
 // Quelques constantes
-var BOX_ROTATION_SPEED = 0.01, HALF_MESH_NUM = 10, MESH_WIDTH = 11.03, MESH_HEIGHT = 5.7, MESH_DEPTH = -85, BASE_MESH_COLOR_HEX;
-var COLORED_MESH = [3, 10, 17], X_FACTOR_MESH = [0, 1, 0];
+var BOX_ROTATION_SPEED = 0.01, HALF_MESH_NUM = 10, MESH_WIDTH = 11.03, MESH_HEIGHT = 5.7, MESH_DEPTH = -85, MESH_ROTATION = 0.6, BASE_MESH_COLOR_HEX;
+var COLORED_MESH = [3, 10, 17], X_FACTOR_MESH = [0, 1, 0], ROTATION_FACTOR_BOX = [1, -1, 1];
 // Constantes pour la taille des boîtes cliquables
 var box_width = 40, box_height = 10, box_depth = MESH_DEPTH;
 var box_bgcolor = 0x444444;
@@ -26,7 +26,7 @@ function initScene()
     // Moteur de rendu de three.js
     renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    document.getElementById("renderer").appendChild(renderer.domElement);
 
     // Scène 3D dans laquelle on va mettre tous les objets
     scene = new THREE.Scene();
@@ -60,7 +60,7 @@ function initScene()
                 mesh.add(m);
             }
             mesh.rotation.order = "ZXY";
-            mesh.rotation.z = 0.6;
+            mesh.rotation.z = MESH_ROTATION;
             mesh.position.z = MESH_DEPTH; // distance respectable, c'est que le modèle est plutôt gros
             // setupControls();
             scene.add(mesh);
@@ -106,7 +106,7 @@ function initScene()
         do
         {
             // léger écart en profondeur pour que les boîtes se chevauchent
-            p.set((MESH_WIDTH + box_width / 2) * X_FACTOR_MESH[i], (i - 1) * 50, box_depth - i);
+            p.set((MESH_WIDTH + box_width / 2) * X_FACTOR_MESH[i], (COLORED_MESH[i] - HALF_MESH_NUM) * MESH_HEIGHT, box_depth - i);
         } while(!frustum.containsPoint(p) || !frustum.containsPoint(p.clone().add(20, 5, 0)));
         dialogBoxes[i].position.set(p.x, p.y, p.z);
         scene.add(dialogBoxes[i]);
@@ -152,7 +152,7 @@ function animate()
         {
             for(var i = 0; i < dialogBoxes.length; i++)
             {
-                var target = new THREE.Vector3(0, (i - 1) * 50, -100);
+                var target = new THREE.Vector3(0, (COLORED_MESH[i] - HALF_MESH_NUM) * MESH_HEIGHT, MESH_DEPTH);
                 target.applyEuler(mesh.rotation);
                 segments[i] = new ConnectorSegments(dialogBoxes[i], target, 0);
                 segments[i].object.rotation.order = mesh.rotation.order;
@@ -163,7 +163,7 @@ function animate()
         for(var i = 0; i < dialogBoxes.length; i++)
         {
             dialogBoxes[i].position.sub(segments[i].target);
-            dialogBoxes[i].position.applyEuler(new THREE.Euler(0., BOX_ROTATION_SPEED, 0.));
+            dialogBoxes[i].position.applyAxisAngle(new THREE.Vector3(-Math.sin(MESH_ROTATION / 2), Math.cos(MESH_ROTATION / 2), 0.), BOX_ROTATION_SPEED * ((i % 2) * 2 - 1));
             dialogBoxes[i].position.add(segments[i].target);
             segments[i].update();
         }
