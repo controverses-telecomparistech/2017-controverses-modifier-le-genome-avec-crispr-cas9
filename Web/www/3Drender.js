@@ -1,5 +1,5 @@
 // Code du rendu 3D
-var renderer, scene, camera, mesh, mouse = new THREE.Vector2();
+var container, renderer, scene, camera, mesh, mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
 var dialogBoxes = [], segments = []; // pour maintenir les ConnectorSegments et les mettre à jour
 // Quelques constantes
@@ -23,14 +23,16 @@ animate();
 
 function initScene()
 {
+    container = document.getElementById("renderer");
     // Moteur de rendu de three.js
     renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById("renderer").appendChild(renderer.domElement);
+    renderer.setSize(container.offsetWidth, container.offsetHeight, false);
+    // renderer.setSize(500, 500);
+    container.appendChild(renderer.domElement);
 
     // Scène 3D dans laquelle on va mettre tous les objets
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+    camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 1, 1000);
     camera.position.z = 10;
     scene.add(camera);
 
@@ -115,14 +117,9 @@ function initScene()
     renderer.domElement.addEventListener("mouseup", mouseup);
     // et qu'elles illuminent la boîte qui va bien
     renderer.domElement.addEventListener("mousemove", updateMouse);
+    // sans pour autant les allumer pour rien
+    renderer.domElement.addEventListener("mouseleave", mouseLeft);
 
-    // Met à jour les coordonnées de la souris
-    function updateMouse(event)
-    {
-        mouse.x = event.clientX / window.innerWidth * 2. - 1.;
-        mouse.y = -event.clientY / window.innerHeight * 2. + 1.;
-    }
-    
     // Appelé quand l'utilisateur relâche le clic gauche
     function mouseup(event)
     {
@@ -135,6 +132,20 @@ function initScene()
                 document.getElementById("Box" + n[1]).click();
             }
         }
+    }
+    
+    // Met à jour les coordonnées de la souris
+    function updateMouse(event)
+    {
+        var rect = event.target.getBoundingClientRect();
+        mouse.x = (event.clientX - rect.left) / rect.width * 2. - 1.;
+        mouse.y = -(event.clientY - rect.top) / rect.height * 2. + 1.;
+    }
+    
+    // Positionne la souris hors du conteneur pour ne pas allumer l'ADN sans raisons
+    function mouseLeft(event)
+    {
+        mouse.x = mouse.y = -10000;
     }
 }
 
