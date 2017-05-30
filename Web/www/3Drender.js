@@ -1,4 +1,3 @@
-// Code du rendu 3D
 var container, renderer, scene, camera, mesh, mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
 var dialogBoxes = [], segments = []; // pour maintenir les ConnectorSegments et les mettre à jour
