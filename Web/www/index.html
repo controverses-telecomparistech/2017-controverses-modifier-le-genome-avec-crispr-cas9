@@ -6,29 +6,70 @@
     <script src="three.min.js"></script>
     <script src="ConnectorSegments.js"></script>
     <link rel="stylesheet" href="colorbox.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./jquery.colorbox.js"></script>
     <style>
-      html { margin:0; background:url("background.png") no-repeat center center fixed; background-size: cover; }
+      html
+      {
+        margin:0;
+        background:url("background.png") no-repeat center center fixed;
+        background-size: cover;
+      }
       #cboxOverlay { visibility: visible; opacity: 0.5 !important; }
       #cboxContent { opacity: 0.8; }
+      #renderer
+      {
+        float: right;
+        width: 50vw;
+        height: 97vh;
+        border-style: solid;
+      }
+      
+      #cover
+      {
+        height: 100vh;
+      }
+      /*
+      #inner
+      {
+        display: none;
+      }*/
     </style>
   </head>
   <body>
-    <div id="renderer">
+    <div id="cover">
+      <button id="scrollDown">Des détails, en veux-tu ? J'en ai plein ...</button>
     </div>
-    <!-- Le texte des trois boîtes de dialogue sont dans une div invisible -->
-    <div style="display:none">
-      <a href="articles/article3.html" class="dialogText" id="Box1"></a>
-      <a href="articles/article2.html" class="dialogText" id="Box2"></a>
-      <a href="articles/article1.html" class="dialogText" id="Box3"></a>
+    <div id="inner">
+      <div style="float:left">Test me daaaddyyyyy<br>
+      Holy shit I'm so fucking fat<br>
+      Look all the room I'm taking up, damn
+      </div>
+      <div id="renderer">
+      </div>
+      <!-- Le texte des trois boîtes de dialogue sont dans une div invisible -->
+      <div style="display:none">
+        <a href="articles/article3.html" class="dialogText" id="Box1"></a>
+        <a href="articles/article2.html" class="dialogText" id="Box2"></a>
+        <a href="articles/article1.html" class="dialogText" id="Box3"></a>
+      </div>
+      
+      <script type="text/javascript">
+        // On configure les liens ci-dessus pour qu'ils ouvrent une pop-up au lieu de charger une page
+        $(".dialogText").colorbox({width:"85%", height:"100%", });
+        
+        // Et on fait en sorte que le bouton de scroll fasse scroller la page
+        $("#scrollDown").on("click", function ()
+          {
+            /*var inner = $("#inner");
+            inner.css("display", "block");*/
+            $("html, body").animate(
+              {"scrollTop": $("#inner").offset().top}, 500, "swing", function () $("#cover").css("display", "none"));
+          }
+        );
+      </script>
+      
+      <script type="text/javascript" src="3Drender.js"></script>
     </div>
-    
-    <script type="text/javascript">
-      // On configure les liens ci-dessus pour qu'ils ouvrent une pop-up au lieu de charger une page
-      $(".dialogText").colorbox({width:"85%", height:"100%", });
-    </script>
-    
-    <script type="text/javascript" src="3Drender.js"></script>
   </body>
 </html>
