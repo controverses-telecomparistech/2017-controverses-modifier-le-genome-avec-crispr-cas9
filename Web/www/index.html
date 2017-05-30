@@ -15,25 +15,37 @@
         background:url("background.png") no-repeat center center fixed;
         background-size: cover;
       }
+      
+      body
+      {
+        position:relative;
+        overflow:hidden;
+      }
+      
       #cboxOverlay { visibility: visible; opacity: 0.5 !important; }
       #cboxContent { opacity: 0.8; }
+      
       #renderer
       {
         float: right;
-        width: 50vw;
-        height: 97vh;
+        width: 50%;
+        height: 100%;
         border-style: solid;
       }
       
       #cover
       {
-        height: 100vh;
+        position:absolute;
+        height: 97vh;
       }
-      /*
+      
       #inner
       {
-        display: none;
-      }*/
+        position:absolute;
+        top:100vh;
+        width: 99vw;
+        height: 97vh;
+      }
     </style>
   </head>
   <body>
@@ -54,22 +66,26 @@
         <a href="articles/article1.html" class="dialogText" id="Box3"></a>
       </div>
       
+      <script type="text/javascript" src="3Drender.js"></script>
+      
       <script type="text/javascript">
         // On configure les liens ci-dessus pour qu'ils ouvrent une pop-up au lieu de charger une page
-        $(".dialogText").colorbox({width:"85%", height:"100%", });
+        $(".dialogText").colorbox({width:"85%", height:"100%"});
         
-        // Et on fait en sorte que le bouton de scroll fasse scroller la page
+        // On fait en sorte que le bouton de scroll fasse scroller la page
         $("#scrollDown").on("click", function ()
           {
-            /*var inner = $("#inner");
-            inner.css("display", "block");*/
-            $("html, body").animate(
-              {"scrollTop": $("#inner").offset().top}, 500, "swing", function () $("#cover").css("display", "none"));
+            var inner = $("#inner"), cover = $("#cover");
+            inner.css("display", "block");
+            /*cover.animate(
+              {"top": -top.offsetHeight + "px"}, 500, "swing", function () $("#cover").css("display", "none"));*/
+            cover.animate(
+              {"top": -cover.height() + "px"}, 500);
+            inner.animate(
+              {"top": cover.css("top") }, 500);
           }
         );
       </script>
-      
-      <script type="text/javascript" src="3Drender.js"></script>
     </div>
   </body>
 </html>
