@@ -31,7 +31,7 @@ function initScene()
 
     // Scène 3D dans laquelle on va mettre tous les objets
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 1, 1000);
+    camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     camera.position.z = 10;
     scene.add(camera);
 
@@ -152,6 +152,14 @@ function initScene()
 function animate()
 {
     requestAnimationFrame(animate);
+    // Si les dimensions du conteneur ont changé, on met à jour des dimensions du render
+    var dims = renderer.getSize();
+    if(dims.width != container.offsetWidth || dims.height != container.offsetHeight)
+    {
+        renderer.setSize(container.offsetWidth, container.offsetHeight, false);
+        camera.aspect = container.offsetWidth / container.offsetHeight;
+        camera.updateProjectionMatrix();
+    }
     // On attend que le modèle 3D soit chargé (chargement asynchrone)
     if(mesh)
     {
