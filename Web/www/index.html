@@ -6,7 +6,7 @@
     <script src="three.min.js"></script>
     <script src="ConnectorSegments.js"></script>
     <link rel="stylesheet" href="colorbox.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
     <script src="./jquery.colorbox.js"></script>
     <script src="simplebar.js"></script>
     <link rel="stylesheet" href="simplebar.css" />
@@ -14,11 +14,13 @@
   </head>
   <body>
     <div class="navbar">
-      <h3>Modifier le génôme avec CRISPR/Cas9</h3>
+      <div id="title"><h2>CRISPR/CAS9</h2></div>
+      <div id="subtitle">Une polémique sur le futur<br>de la manipulation génétique</div>
     </div>
     
     <div id="cover">
-      <div id="scrollDown">&nbsp;Des détails, en veux-tu ? J'en ai plein ...&nbsp;</div>
+      <!-- <div id="scrollDown">&nbsp;Des détails, en veux-tu ? J'en ai plein ...&nbsp;</div> -->
+      <img src="images/bouton.svg" id="scrollDown" width="25%" height="25%"></img>
     </div>
     <div id="inner">
       <div id="introduction" data-simplebar>
@@ -44,6 +46,9 @@
       <script type="text/javascript" src="3Drender.js"></script>
       
       <script type="text/javascript">
+        var TRANSITION_DURATION = 1000;
+        var COLORBOX_POP_DURATION = 500;
+        
         // On configure les liens ci-dessus pour qu'ils ouvrent une pop-up au lieu de charger une page
         var initialIntroLeft, initialRendererRight, initialNavbarTop;
         var introDOM = $("#introduction"), rendererDOM = $("#renderer"), navbarDOM = $(".navbar");
@@ -51,19 +56,19 @@
         $(".dialogText").colorbox({width:"85%", height:"100%", onClosed: function ()
           {
             introDOM.css("display", "initial");
-            introDOM.animate({ "margin-left": initialIntroLeft });
-            rendererDOM.animate({ "margin-right": initialRendererRight });
+            introDOM.animate({ "margin-left": initialIntroLeft }, COLORBOX_POP_DURATION);
+            rendererDOM.animate({ "margin-right": initialRendererRight }, COLORBOX_POP_DURATION);
             navbarDOM.css("display", "initial");
-            navbarDOM.animate({ "margin-top": initialNavbarTop });
+            navbarDOM.animate({ "margin-top": initialNavbarTop }, COLORBOX_POP_DURATION);
           }})
         .on("click", function ()
             {
               initialIntroLeft = introDOM.css("margin-left");
               initialRendererRight = rendererDOM.css("margin-right");
               initialNavbarTop = navbarDOM.css("margin-top");
-              introDOM.animate({ "margin-left": "-" + introDOM.css("width")}, function () introDOM.css("display", "none"));
+              introDOM.animate({ "margin-left": "-" + introDOM.css("width")}, COLORBOX_POP_DURATION, function () introDOM.css("display", "none"));
               rendererDOM.animate({ "margin-right": "25%" });
-              navbarDOM.animate({ "margin-top": "-" + navbarDOM.css("height") }, function () navbarDOM.css("display", "none"));
+              navbarDOM.animate({ "margin-top": "-" + navbarDOM.css("height") }, COLORBOX_POP_DURATION, function () navbarDOM.css("display", "none"));
             }
         );
         
@@ -75,9 +80,11 @@
             /*cover.animate(
               {"top": -top.offsetHeight + "px"}, 500, "swing", function () $("#cover").css("display", "none"));*/
             cover.animate(
-              {"top": -cover.height() + "px"}, 500);
+              {"top": -cover.height() + "px"}, TRANSITION_DURATION);
             inner.animate(
-              {"top": cover.css("top") }, 500);
+              {"top": cover.css("top") }, TRANSITION_DURATION);
+            $(".navbar").animate({"top": "-3vw"}, TRANSITION_DURATION);
+            $("#subtitle").animate({"opacity": "0"}, TRANSITION_DURATION);
           }
         );
       </script>

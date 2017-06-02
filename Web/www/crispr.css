@@ -16,25 +16,24 @@ body
 {
     position: fixed;
     left: 12.5%;
-    top: 0;
-    background: linear-gradient(#ddd, #fff);
+    top: 25%;
+    font-size: 250%;
+    /*background: linear-gradient(#ddd, #fff);*/
     width:75%;
-    border-style: solid;
+    /*border-style: solid;
     border-color: #ddd;
-    border-width: 1px;
+    border-width: 1px;*/
     text-align: center;
     z-index: 5;
 }
 
+#subtitle
+{
+    margin-top:-3vw;
+}
+
 #cboxOverlay { visibility: visible; opacity: 1.0 !important; }
 #cboxContent { opacity: 0.9; }
-
-#renderer
-{
-    float: right;
-    width: 50%;
-    height: 95%;
-}
 
 #cover
 {
@@ -45,14 +44,13 @@ body
 #scrollDown
 {
     cursor: pointer;
-    background-color: #eeeeee;
-    border-style: solid;
+    /*border-style: solid;
     border-width: 3px;
     border-radius: 10px;
-    border-color: #aaa;
+    border-color: #aaa;*/
     margin-left: 49vw;
-    transform: translate(-50%, 0);
-    margin-top: 80vh;
+    margin-top: 95%;
+    transform: translate(-50%, -200%);
 }
 
 #scrollDown:hover
@@ -66,16 +64,36 @@ body
     position:absolute;
     top:100vh;
     width: 99vw;
-    height: 90vh;
+    height: 94vh;
 }
 
 #introduction
 {
     float: left;
     /* border-style: solid;*/
-    border-radius: 10px;
-    margin-left: 5vw;
+    text-align: justify;
+    margin-left: 2vw;
     max-height: 95%;
-    max-width: 40vw;
-    background: linear-gradient(#dddddd80, #ffffff80);
+    max-width: 50vw;
+    background: linear-gradient(#ddddddd0, #ffffffd0);
+    
+}
+div > p
+{
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 3vw;
+}
+
+#renderer
+{
+    float: right;
+    width: 40%;
+    height: 95%;
+}
+
+@font-face
+{
+    font-family: "MyriadPro-Bold";
+    src: url("MyriadPro-Bold.otf");
 }
