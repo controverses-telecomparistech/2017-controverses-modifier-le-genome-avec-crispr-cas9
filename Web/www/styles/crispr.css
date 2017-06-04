@@ -74,10 +74,9 @@ body
     /* border-style: solid;*/
     text-align: justify;
     margin-left: 2vw;
-    max-height: 95vh;
+    max-height: 90vh;
     max-width: 50vw;
-    background: linear-gradient(#ddddddd0, #ffffffd0);
-    
+    background-color: rgba(221, 221, 221, 0.75);
 }
 div > p
 {

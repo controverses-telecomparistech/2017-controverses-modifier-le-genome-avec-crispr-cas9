@@ -66,9 +66,9 @@
               initialIntroLeft = introDOM.css("margin-left");
               initialRendererRight = rendererDOM.css("margin-right");
               initialNavbarTop = navbarDOM.css("margin-top");
-              introDOM.animate({ "margin-left": "-" + introDOM.css("width")}, COLORBOX_POP_DURATION, function () introDOM.css("display", "none"));
+              introDOM.animate({ "margin-left": "-" + introDOM.css("width")}, COLORBOX_POP_DURATION, function () { introDOM.css("display", "none"); });
               rendererDOM.animate({ "margin-right": "25%" });
-              navbarDOM.animate({ "margin-top": "-" + navbarDOM.css("height") }, COLORBOX_POP_DURATION, function () navbarDOM.css("display", "none"));
+              navbarDOM.animate({ "margin-top": "-" + navbarDOM.css("height") }, COLORBOX_POP_DURATION, function () { navbarDOM.css("display", "none"); });
             }
         );
         
