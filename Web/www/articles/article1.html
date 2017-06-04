@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Graphe des acteurs</title>
+  
+  <script src="scripts/sigma.min.js"></script>
+  <script src="scripts/plugins/sigma.parsers.gexf.min.js"></script>
+  <script src="ble"></script>
+  <script>
+    // ####
+    // Code render begin
+    // ####
+    
+    sigma.parsers.gexf('data/graph.gexf', { container:'graph-container' },
+      function (instance) { instance.refresh(); });
+  </script>
+  <style>
+  .container {
+      /*position: fixed;*/
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
 <body>
-<p>Ceci est l'article 1 ! Bienvenue !</p>
+<div class="container">
+  <div class="container" id="graph-container" width="100%" height="100%"></div>
+</div>
 </body>
 </html>
