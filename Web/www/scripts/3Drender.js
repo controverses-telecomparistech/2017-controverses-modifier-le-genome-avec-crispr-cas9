@@ -49,7 +49,7 @@ function initScene()
     // Ajout du gros modèle 3D d'ADN
     // ! Le chargement est asynchrone !
     var jsonLoader = new THREE.JSONLoader();
-    jsonLoader.load("dna.json", function(geometry, materials)
+    jsonLoader.load("data/dna.json", function(geometry, materials)
         {
             BASE_MESH_COLOR_HEX = materials[0].color.getHex();
             mesh = new THREE.Group();
@@ -104,11 +104,8 @@ function initScene()
         dialogBoxes[i].add(new THREE.Line(outline_geom, outline_mat));
         // On place la boîte au hasard dans le champ de vision de la caméra
         var p = new THREE.Vector3();
-        do
-        {
-            // léger écart en profondeur pour que les boîtes se chevauchent
-            p.set((MESH_WIDTH + box_width / 2) * X_FACTOR_MESH[i], (COLORED_MESH[i] - HALF_MESH_NUM) * MESH_HEIGHT, box_depth - i);
-        } while(!frustum.containsPoint(p) || !frustum.containsPoint(p.clone().add(20, 5, 0)));
+        // léger écart en profondeur pour que les boîtes se chevauchent
+        p.set((MESH_WIDTH + box_width / 2) * X_FACTOR_MESH[i], (COLORED_MESH[i] - HALF_MESH_NUM) * MESH_HEIGHT, box_depth - i);
         dialogBoxes[i].position.set(p.x, p.y, p.z);
         scene.add(dialogBoxes[i]);
     }
