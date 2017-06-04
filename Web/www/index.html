@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>WebGL model renderer</title>
-    <script src="three.min.js"></script>
-    <script src="ConnectorSegments.js"></script>
-    <link rel="stylesheet" href="colorbox.css" />
-    <script src="jquery.min.js"></script>
-    <script src="./jquery.colorbox.js"></script>
-    <script src="simplebar.js"></script>
-    <link rel="stylesheet" href="simplebar.css" />
-    <link rel="stylesheet" href="crispr.css" />
+    <script src="scripts/three.min.js"></script>
+    <script src="scripts/ConnectorSegments.js"></script>
+    <link rel="stylesheet" href="styles/colorbox.css" />
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.colorbox.js"></script>
+    <script src="scripts/simplebar.js"></script>
+    <link rel="stylesheet" href="styles/simplebar.css" />
+    <link rel="stylesheet" href="styles/crispr.css" />
   </head>
   <body>
     <div class="navbar">
@@ -43,7 +43,7 @@
         <a href="articles/article1.html" class="dialogText" id="Box3"></a>
       </div>
       
-      <script type="text/javascript" src="3Drender.js"></script>
+      <script type="text/javascript" src="scripts/3Drender.js"></script>
       
       <script type="text/javascript">
         var TRANSITION_DURATION = 1000;
@@ -83,7 +83,7 @@
               {"top": -cover.height() + "px"}, TRANSITION_DURATION);
             inner.animate(
               {"top": cover.css("top") }, TRANSITION_DURATION);
-            $(".navbar").animate({"top": "-3vw"}, TRANSITION_DURATION);
+            navbarDOM.animate({"top": "-" + $("#title").height() / 2 + "px"}, TRANSITION_DURATION);
             $("#subtitle").animate({"opacity": "0"}, TRANSITION_DURATION);
           }
         );
