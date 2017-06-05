@@ -88,7 +88,7 @@
             inner.animate(
               {"top": cover.css("top") }, TRANSITION_DURATION);
             navbarDOM.animate({"top": "-" + $("#title").height() / 2 + "px"}, TRANSITION_DURATION);
-            $("#subtitle").animate({"opacity": "0"}, TRANSITION_DURATION);
+            $("#subtitle").animate({"opacity": "0"}, TRANSITION_DURATION, function () { $("#subtitle").css("display", "none"); });
           }
         );
         
