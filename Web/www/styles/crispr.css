@@ -68,17 +68,18 @@ body
     height: 92vh;
 }
 
-#introduction
+#introduction-box
 {
     float: left;
     /* border-style: solid;*/
     text-align: justify;
     margin-left: 2vw;
-    max-height: 90vh;
+    max-height: 89vh;
     max-width: 50vw;
     background-color: rgba(221, 221, 221, 0.75);
 }
-div > p
+
+#introduction
 {
     padding-left: 6vw;
     padding-right: 6vw;

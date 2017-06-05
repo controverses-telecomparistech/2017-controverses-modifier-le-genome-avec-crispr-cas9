@@ -23,16 +23,17 @@
       <img src="images/bouton.svg" id="scrollDown" width="25%" height="25%"></img>
     </div>
     <div id="inner">
-      <div id="introduction" data-simplebar>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque pulvinar enim, in dignissim velit ullamcorper nec. Suspendisse vel lorem eu massa pharetra porttitor. Quisque venenatis tempor dolor. Etiam egestas nisl quis dapibus venenatis. Mauris cursus placerat lectus ut placerat. Sed gravida volutpat dapibus. Pellentesque vulputate mauris sed sapien eleifend varius.</p>
-        
-        <p>Nullam tempus consectetur ipsum et tristique. Vivamus eget facilisis libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam neque elit, vehicula et dui non, consectetur egestas diam. Phasellus ut sapien vel neque fermentum faucibus. Sed ac iaculis quam, at gravida nulla. Nunc in mi et massa tempus ullamcorper. Vivamus pulvinar ut ante et consectetur. Ut placerat lacus a orci hendrerit ultricies. Proin id felis a elit aliquet ultrices vitae eu libero. Donec volutpat quis elit sit amet euismod. Morbi orci ligula, feugiat non sagittis vitae, semper id libero. Integer pellentesque non tellus a pretium.</p>
-        
-        <p>Curabitur tempor metus a justo rutrum rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In posuere libero at turpis scelerisque cursus. Nullam nunc lorem, sodales eget blandit at, aliquet vel ligula. Sed consectetur libero non nibh suscipit, ac lacinia diam tempor. Morbi eu laoreet augue. Mauris facilisis enim non sapien bibendum, id suscipit nisi semper. Sed rutrum, lorem in congue interdum, ligula elit tincidunt justo, congue ultricies dui nisl nec metus. Curabitur vitae sodales enim. Donec lobortis lacus vitae velit fermentum maximus. Nunc quis ante mauris. Vestibulum maximus tortor ac leo sagittis tincidunt. Praesent dignissim vehicula libero vel laoreet. In arcu mi, consectetur nec dui id, volutpat porta enim. Phasellus eu rhoncus erat. Duis ultrices metus non arcu pulvinar, eget fermentum purus dapibus.</p>
-        
-        <p>Donec id orci eu tortor pellentesque ornare. Fusce mattis sagittis erat quis ullamcorper. Sed porttitor ligula sit amet diam dictum, et blandit odio efficitur. Proin ligula nisi, imperdiet id dui non, viverra elementum sem. Suspendisse dignissim non mauris ac viverra. Nulla dignissim magna nec turpis rutrum consequat in eget nulla. Suspendisse cursus pharetra odio, id cursus lorem sodales eu. Donec eleifend vitae dui eget imperdiet. Duis tristique erat vitae ex ullamcorper vehicula et nec mauris. Quisque interdum nunc dapibus efficitur tristique. Sed id dui eu nibh scelerisque feugiat eget sit amet erat. Sed facilisis leo arcu, at viverra orci pretium a.</p>
-        
-        <p>Curabitur vel mauris luctus, consectetur tortor non, ullamcorper sem. Pellentesque tempor magna eget lacus lacinia convallis. Vestibulum id erat rutrum libero dapibus dapibus. Fusce in pulvinar dui, quis tempor dolor. Donec vulputate metus ac metus auctor, finibus efficitur nulla fermentum. Fusce sed metus risus. Mauris scelerisque, turpis in faucibus euismod, est leo aliquet arcu, nec venenatis purus turpis et urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse tincidunt nisi orci, eu commodo ante efficitur vel. Morbi ac pretium erat.</p>
+      <div id="introduction-box" data-simplebar>
+        <div id="introduction">
+          <h2>Description de la technologie</h2>
+          Crispr-Cas9 est une enzyme découverte en 2012 par la chercheuse française Emmanuelle Charpentier. Cette enzyme permet de couper un morceau d’ADN et de le remplacer par un autre, et ce de manière complètement déterministe.<br>
+          <img src="images/crispr-cas9.png" width="100%" height="100%" /><br>
+          Ainsi, il est possible de sélectionner précisément un gène, et de le modifier comme bon nous semble, et ce même directement chez un embryon.
+          <h2>Une révolution dans le domaine</h2>
+          Globalement, on peut affirmer qu’il était déjà possible de réaliser de telles modifications avec d’autres technologies, comme par exemple avec la technologie TALEN. Cependant, Crispr-Cas9 assure un coût, une difficulté et un temps de réalisation extrêmement réduits.
+          <h2>Problèmes majeurs</h2>
+          Bien évidemment, une telle découverte, créant un tel écart avec les autres technologies du domaine, ne peut que susciter des questions autour des enjeux éthiques de ses performances, ce que nous allons mettre en lumière.
+        </div>
       </div>
       
       <div id="renderer">
@@ -55,7 +56,7 @@
         
         // On configure les liens ci-dessus pour qu'ils ouvrent une pop-up au lieu de charger une page
         var initialIntroLeft, initialRendererRight, initialNavbarTop;
-        var introDOM = $("#introduction"), rendererDOM = $("#renderer"), navbarDOM = $(".navbar");
+        var introDOM = $("#introduction-box"), rendererDOM = $("#renderer"), navbarDOM = $(".navbar");
         
         $(".dialogText").colorbox({width:"85%", height:"100%", speed:350, onClosed: function ()
           {
