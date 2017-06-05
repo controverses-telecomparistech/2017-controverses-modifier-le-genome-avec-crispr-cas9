@@ -53,7 +53,7 @@
         var initialIntroLeft, initialRendererRight, initialNavbarTop;
         var introDOM = $("#introduction"), rendererDOM = $("#renderer"), navbarDOM = $(".navbar");
         
-        $(".dialogText").colorbox({width:"85%", height:"100%", onClosed: function ()
+        $(".dialogText").colorbox({width:"85%", height:"100%", speed:350, onClosed: function ()
           {
             introDOM.css("display", "initial");
             introDOM.animate({ "margin-left": initialIntroLeft }, COLORBOX_POP_DURATION);
