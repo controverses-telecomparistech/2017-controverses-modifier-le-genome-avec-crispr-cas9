@@ -2,8 +2,9 @@ var container, renderer, scene, camera, mesh, mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster(); // pour détecter quel objet est sous la souris
 var dialogBoxes = [], segments = []; // pour maintenir les ConnectorSegments et les mettre à jour
 // Quelques constantes
+var BOX_NUM = 5;
 var BOX_ROTATION_SPEED = 0.01, HALF_MESH_NUM = 10, MESH_WIDTH = 11.03, MESH_HEIGHT = 5.7, MESH_DEPTH = -85, MESH_ROTATION = 0.6, BASE_MESH_COLOR_HEX;
-var COLORED_MESH = [3, 10, 17], X_FACTOR_MESH = [0, 1, 0], ROTATION_FACTOR_BOX = [1, -1, 1];
+var COLORED_MESH = [2, 6, 10, 14, 18], X_FACTOR_MESH = [0, 0.5, 1, 0.5, 0], ROTATION_FACTOR_BOX = [-1, 1, -1, 1, -1];
 // Constantes pour la taille des boîtes cliquables
 var box_width = 40, box_height = 10, box_depth = MESH_DEPTH;
 var box_bgcolor = 0x444444;
@@ -89,7 +90,7 @@ function initScene()
     var ctx = canvas.getContext("2d");
     ctx.font = "30px Courier";
     
-    for(var i = 0; i < 3; i++)
+    for(var i = 0; i < BOX_NUM; i++)
     {
         dialogBoxes[i] = new THREE.Group()
         // Fond gris
@@ -165,7 +166,7 @@ function animate()
         // On initialise les ConnectorSegments s'il le faut
         if(segments.length < 1)
         {
-            for(var i = 0; i < dialogBoxes.length; i++)
+            for(var i = 0; i < BOX_NUM; i++)
             {
                 var target = new THREE.Vector3(0, (COLORED_MESH[i] - HALF_MESH_NUM) * MESH_HEIGHT, MESH_DEPTH);
                 target.applyEuler(mesh.rotation);
@@ -175,7 +176,7 @@ function animate()
             }
         }
         // Il y a autant de ConnectorSegments que de dialogBoxes
-        for(var i = 0; i < dialogBoxes.length; i++)
+        for(var i = 0; i < BOX_NUM; i++)
         {
             dialogBoxes[i].position.sub(segments[i].target);
             dialogBoxes[i].position.applyAxisAngle(new THREE.Vector3(-Math.sin(MESH_ROTATION / 2), Math.cos(MESH_ROTATION / 2), 0.), BOX_ROTATION_SPEED * ((i % 2) * 2 - 1));
