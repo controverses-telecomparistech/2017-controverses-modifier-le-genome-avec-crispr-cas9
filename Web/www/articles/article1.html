@@ -7,7 +7,7 @@
   <script src="scripts/jquery.min.js"></script>
   <script src="scripts/sigma.min.js"></script>
   <script src="scripts/plugins/sigma.parsers.gexf.min.js"></script>
-  <script src="ble"></script>
+  <link rel="stylesheet" href="articles/article1.css" />
   <style>
   .container {
       display: block;
@@ -18,11 +18,42 @@
   </style>
 </head>
 <body>
-<div class="container" id="graph-container" width="100%" height="100%"></div>
-<script>
+  <div class="tabbed-content">
+    <ul class="tabs">
+      <li class="tab-link current" data-tab="graph-container">Arbre des débats</li>
+      <li class="tab-link" data-tab="tab-timeline">Timeline</li>
+      <li class="tab-link" data-tab="tab3">Acteurs</li>
+    </ul>
+  
+    <div class="container tab-content current" id="graph-container">
+    </div>
+    
+    <div class="tab-content" id="tab-timeline" style="width: 98%; height:100%;">
+      <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1GMFwVyMPHZshcQVo1ATTwScTCEhd2uqS8ilinvl2BKM&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' -webkit-allow-fullscreen -moz-allow-fullscreen allow-fullscreen frameborder='0'></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab3">Content me dad</div>
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+	
+      $('ul.tabs li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+      })
+
+    });
+    
     // ####
-    // Code render begin
+    // Code d'affichage de l'arbre des débats
     // ####
+
     setTimeout(function ()
     {
       var s = new sigma({
