@@ -1,9 +1,21 @@
-ul.tabs{
+.container
+{
+    display: block;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+ul.tabs
+{
     margin: 0px;
     padding: 0px;
     list-style: none;
 }
-ul.tabs li{
+
+ul.tabs li
+{
     background: none;
     color: #222;
     display: inline-block;
@@ -11,12 +23,14 @@ ul.tabs li{
     cursor: pointer;
 }
 
-ul.tabs li.current{
+ul.tabs li.current
+{
     background: #ededed;
     color: #222;
 }
 
-.tab-content{
+.tab-content
+{
     position:absolute;
     opacity:0;
     background: #ededed;
@@ -24,7 +38,25 @@ ul.tabs li.current{
     z-index: 2;
 }
 
-.tab-content.current{
+.tab-content.current
+{
     opacity:1;
     z-index: 3;
+}
+
+.debat
+{
+    display:none;
+    position: absolute;
+    width: 75%;
+    margin: auto;
+    z-index: 5;
+}
+
+.debat.current
+{
+    display: block;
+    border-style: solid;
+    border-width: 3px;
+    background-color: #ffffff;
 }

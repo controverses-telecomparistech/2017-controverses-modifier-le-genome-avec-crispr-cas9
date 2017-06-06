@@ -8,16 +8,9 @@
   <script src="scripts/sigma.min.js"></script>
   <script src="scripts/plugins/sigma.parsers.gexf.min.js"></script>
   <link rel="stylesheet" href="articles/article1.css" />
-  <style>
-  .container {
-      display: block;
-      position:absolute;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
 </head>
 <body>
+  <!-- Affichage par onglets de l'arbre des débats, timeline et acteurs -->
   <div class="tabbed-content">
     <ul class="tabs">
       <li class="tab-link current" data-tab="graph-container">Arbre des débats</li>
@@ -26,9 +19,109 @@
     </ul>
   
     <div class="container tab-content current" id="graph-container">
+      <div id="texte_debat">
+        <!-- Arbre des débats -->
+
+        <!-- Politique -->
+
+        <div class="debat" id="defense">
+            <h2>Politique de défense</h2>
+            
+          Pouvoir modifier génétiquement des êtres humains annonce une problématique sur le plan géopolitique : tous les pays vont vouloir s’approprier la technologie et la développer au maximum, pour en tirer l’avantage tactique maximum. On peut par exemple entrevoir la création de super-soldats, ou tout du moins l’amélioration des capacités physiques et mentales au sein d’une armée.
+        </div>
+
+        <div class="debat" id="economy">
+            <h2>Politique économique</h2>
+
+          La question d’un moratoire pour pouvoir réfléchir éthiquement aux conséquences de la technologie CRISPR a été évoqué par un certain nombres de scientifiques, en particulier français. Cependant, cela s’est soldé par un échec, car les enjeux politico-économiques sont tels qu’il n’est pas possible, pour un pays comme la France ou les Etats-Unis, d’arrêter les recherches momentanément, alors que d’autres pays comme la Chine ou la Grande-Bretagne s’y engouffrent totalement.
+        </div>
+
+        <div class="debat" id="ethics">
+            <h2>Enjeux éthiques</h2>
+
+          Il sera possible, avec la technologie CRISPR-CAS9, de choisir les caractéristiques physiques d’un enfant à venir : couleur des yeux, couleur de la peau, taille, forme du visage... Ces possibilités relancent un certain débat racial, et notamment celui de l’eugénisme : si l’on peut choisir toutes les caractéristiques physiques d’un être humain, cela ne va-t-il pas mener à la disparition, ou tout du moins à l’affaiblissement de la diversité du genre humain ?
+        </div>
+
+        <!-- Economique -->
+
+        <div class="debat" id="costs">
+            <h2>Coût</h2>
+
+          Il s’avère que les modifications génétiques avec CRISPR-CAS9 demandent un investissement beaucoup moins important que les précédentes technologies. Cela pose un problème quant à la limitation de son utilisation, spécifiquement parce qu’aujourd’hui, les impacts et effets de bord de cette technologie ne sont pas totalement éclaircis. Le coût des modifications génétiques permettait par le passé de limiter les expérimentations "clandestines", mais maintenant, ce facteur n’est plus discriminant.
+        </div>
+
+        <div class="debat" id="development">
+            <h2>Développement</h2>
+
+          Il est vu dans cette technologie une grande opportunité sur le plan économique. Ainsi, le nombre de start-up qui se lancent dans le domaine explosent à ce jour. Ce facteur est très positif pour le développement économique dans le domaine. Cependant, il est légitime de se demander cette expansion soudaine ne va pas entraîner des dérives, tant sur le bousculement économique justement, que sur les possibles dérives scientifiques.
+        </div>
+
+        <div class="debat" id="agriculture">
+            <h2>Agriculture</h2>
+
+          Cette découverte dans le monde des modifications génétiques remet au goût du jour le débat des OGMs. En effet, il sera désormais possible, et à moindre coût, de sélectionner un caractère à valoriser dans un produit, et à l’exploiter au maximum. Cependant, les conséquences sur l’écologie et l’être humain ne sont absolument pas déterminés pour le moment.
+        </div>
+
+
+        <div class="debat" id="morals">
+            <h2>Moral</h2>
+
+          Certaines associations défendent la moralité de cette technologie, et également de ce qui concerne les manipulations génétiques en général. En effet, est-il dans notre droit de modifier ce que la nature nous a donné ? Certains évoquent même le rapport à Dieu, disposant lui seul du droit de création.
+        </div>
+
+        <!-- Scientifique -->
+
+        <!-- Expérimentations -->
+
+        <div class="debat" id="stem">
+            <h2>Recherche embryonnaire</h2>
+
+          Un des grands problèmes soulevés par le moratoire demandé par des scientifiques français consiste en l’expérimentation sur des embryons humains. En effet, il paraît nécessaire de tester la technologie CRISPR sur ces embryons, car le génome humain et sa complexité sont propres à lui-même. Cependant, de lourdes questions se posent : est-il concevable de d’expérimenter sur des futurs êtres humains ? Si les expérimentations marchent, doit-on les laisser vivre ? Et si les conséquences s’avèrent désastreuses ?
+        </div>
+
+        <div class="debat" id="simplification">
+            <h2>Sur-simplification</h2>
+
+           D’après les scientifiques ayant découvert CRISPR-CAS9, il est extrêmement aisé de réaliser des telles modifications génétiques, à tel point qu’un individu avec un tant soit peu de connaissances dans le domaine, possédant un laboratoire avec un équipement minimal, peut tout à fait les réaliser. D’une part, cela facilite grandement les recherches, et contribue à l’expansion des données et résultats. Cependant, cela pourrait conduire à des débordements et des expérimentations plus ou moins « clandestines ».
+        </div>
+
+        <!-- Designer -->
+
+        <div class="debat" id="improvements">
+            <h2>Améliorations</h2>
+
+          À la mention de « modification génétique », on pense en premier lieu à l’amélioration des capacités physiques et mentales de l’humain. Cela commencerait par des soins, par exemple en ce qui concerne les blessés chroniques, mais pourrait rapidement s’étendre par exemple au domaine du sport, afin d’améliorer les performances physiques. Cependant, y aura-t-il une limite à cette escalade ? Si elle ne vient pas naturellement, devrons-nous la fixer ?
+        </div>
+
+        <div class="debat" id="transmission">
+            <h2>Transmission</h2>
+
+          Il existe deux types de cellules dans le corps : les cellules germinales et les cellules somatiques. Les caractères des cellules germinales vont être ceux transmis à la descendance. Un problème se pose alors sur la modification de ces cellules : il serait possible d’éliminer de manière pérenne des maladies génétiques par exemples, mais cela ne dériverait-il pas sur la transmission de caractères précis et particuliers ?
+        </div>
+
+        <!-- Possibilités -->
+
+        <div class="debat" id="medicine">
+            <h2>Médicales</h2>
+
+          On peut entrevoir, dans le cas de la modification génétique en générale, de pouvoir guérir des maladies comme le cancer ou le sida, mais aussi toutes sortes de maladies génétiques, et ce dès la phase embryonnaire. Seulement, est-il légitime de supprimer toute sorte de problèmes naturels ? De plus, qui sait comment cela va influencer l’évolution de l’homme ?
+        </div>
+
+        <div class="debat" id="chemwar">
+            <h2>Armes chimiques</h2>
+
+          La modification génétique peut non seulement s’appliquer aux êtres humains et aux animaux, mais également aux corps tels que les virus et les bactéries. Avec la simplicité d’utilisation et la précision de CRISPR-CAS9, il serait alors possible de créer de toutes nouvelles armes biologiques, avec des capacités plus dévastatrices les unes que les autres.
+        </div>
+
+        <div class="debat" id="pest">
+            <h2>Eradication de nuisibles</h2>
+
+          Des expériences ont été réalisées sur des moustiques afin d’éradiquer le paludisme : certaines populations ont été génétiquement modifiées afin de ne plus pouvoir transmettre la maladie, et de pouvoir transmettre ce caractère à leurs descendants. Ainsi, l’éradication de nuisibles dans la durée est envisageable. Cependant, qu’elles en seraient les conséquences écologiques ? En effet, l’éradication de populations pourrait entraîner des réactions en chaînes imprévues sur l’écosystème entier.
+        </div>
+      </div>
     </div>
     
-    <div class="tab-content" id="tab-timeline" style="width: 98%; height:100%;">
+    <div class="tab-content" id="tab-timeline" style="width: 98%;">
       <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1GMFwVyMPHZshcQVo1ATTwScTCEhd2uqS8ilinvl2BKM&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' -webkit-allow-fullscreen -moz-allow-fullscreen allow-fullscreen frameborder='0'></iframe>
     </div>
     
@@ -53,6 +146,7 @@
     // ####
     // Code d'affichage de l'arbre des débats
     // ####
+    var currentDiv;
 
     setTimeout(function ()
     {
@@ -71,6 +165,25 @@
       sigma.parsers.gexf('data/graph.gexf', s, function ()
         {
           s.refresh();
+          // On affiche les divs quand on clique sur les noeuds
+          s.bind("clickNode",
+            function (e)
+            {
+              currentDiv = $("#" + e.data.node.id);
+              if(currentDiv)
+              {
+                currentDiv.addClass("current");
+              }
+            }
+          ).bind("click", function ()
+            {
+              if(currentDiv)
+              {
+                currentDiv.removeClass("current");
+                currentDiv = undefined;
+              }
+            }
+          );
         }
       );
     }, 700); // deux fois la durée de l'animation jQuery ColorBox pour être sûr, cf index.html !
