@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>WebGL model renderer</title>
+    <title>ETIC groupe 19, 2017</title>
     <script src="scripts/three.min.js"></script>
     <script src="scripts/ConnectorSegments.js"></script>
     <link rel="stylesheet" href="styles/colorbox.css" />
@@ -78,6 +78,16 @@
         );
         
         // On fait en sorte que le bouton de scroll fasse scroller la page
+        // Tout en animant un peu le bouton, pourquoi pas
+        requestAnimationFrame(animateScrollDownButton);
+        var sDB = $("#scrollDown");
+        var sDBBaseTop = sDB.css("margin-top");
+        function animateScrollDownButton()
+        {
+          requestAnimationFrame(animateScrollDownButton);
+          sDB.css("margin-top", parseInt(sDBBaseTop.split("px")[0], 10) + Math.floor(Math.sin(Date.now() / 1000 * Math.PI) * 20) + "px");
+        }
+        
         $("#scrollDown").on("click", function ()
           {
             var inner = $("#inner"), cover = $("#cover");
