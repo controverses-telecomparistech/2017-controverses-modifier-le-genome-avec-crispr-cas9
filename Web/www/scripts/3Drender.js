@@ -4,10 +4,11 @@ var dialogBoxes = [], segments = []; // pour maintenir les ConnectorSegments et 
 // Quelques constantes
 var BOX_NUM = 5;
 var BOX_ROTATION_SPEED = 0.01, HALF_MESH_NUM = 10, MESH_WIDTH = 11.03, MESH_HEIGHT = 5.7, MESH_DEPTH = -85, MESH_ROTATION = 0.6, BASE_MESH_COLOR_HEX;
-var COLORED_MESH = [2, 6, 10, 14, 18], X_FACTOR_MESH = [0, 0.5, 1, 0.5, 0], ROTATION_FACTOR_BOX = [-1, 1, -1, 1, -1];
+var COLORED_MESH = [2, 6, 10, 14, 18], X_FACTOR_MESH = [0, -0.5, 1, 0.5, 0], ROTATION_FACTOR_BOX = [-1, 1, -1, 1, -1];
+var CANVAS_TO_BOX_FACTOR = 40;
 // Constantes pour la taille des boîtes cliquables
 var box_width = 40, box_height = 10, box_depth = MESH_DEPTH;
-var box_bgcolor = 0x444444;
+var box_bgcolor = "#cccccc", box_texts = [ "Entretiens", ["Expertise", "scientifique"], "Presse & Média", "Politique & droit", "Vue d'ensemble" ];
 
 // Trouve toutes les boîtes actuellement sous la souris ; retourne un tableau
 function raycastMouse()
@@ -82,20 +83,35 @@ function initScene()
 
     // On construit les Mesh des boîtes
     // On va afficher le texte sur un canvas qui sera ensuite utilisé comme texture par la boîte
-    var frustum = new THREE.Frustum(); // limites du champ de vision
-    frustum.setFromMatrix(camera.projectionMatrix);
-    var canvas = document.createElement("canvas");
-    canvas.width = box_width;
-    canvas.height = box_height;
-    var ctx = canvas.getContext("2d");
-    ctx.font = "30px Courier";
-    
+    var text_size = 150;
     for(var i = 0; i < BOX_NUM; i++)
     {
-        dialogBoxes[i] = new THREE.Group()
+        var canvas = document.createElement("canvas");
+        canvas.width = box_width * CANVAS_TO_BOX_FACTOR;
+        canvas.height = box_height * CANVAS_TO_BOX_FACTOR;
+        var ctx = canvas.getContext("2d");
+        ctx.font = text_size + "px Courier";
+        dialogBoxes[i] = new THREE.Group();
         // Fond gris
-        ctx.fillStyle = "#444444";
-        ctx.fillRect(0, 0, box_width, box_height);
+        ctx.fillStyle = box_bgcolor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#000000";
+        if(typeof box_texts[i] === "string")
+        {
+            var w = ctx.measureText(box_texts[i]).width;
+            ctx.fillText(box_texts[i], (canvas.width - w) / 2, (canvas.height + text_size / 2) / 2);
+        }
+        else
+        {
+            // On a deux strings, c'est "Expertise scientifique"
+            var text_y = (canvas.height - text_size) / 2;
+            for(var j = 0; j < 2; j++)
+            {
+                var w = ctx.measureText(box_texts[i][j]).width;
+                ctx.fillText(box_texts[i][j], (canvas.width - w) / 2, text_y);
+                text_y += text_size;
+            }
+        }
 
         // Les noms de toutes les boîtes commencent par "box" pour les retrouver plus tard
         var mat = new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas), side:THREE.DoubleSide});
