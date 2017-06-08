@@ -49,12 +49,15 @@ ul.tabs li.current
     display: none;
     position: absolute;
     z-index: 5;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 5vh;
+    padding-bottom: 7vh;
 }
 
 .debat.current
 {
     display: initial;
-    margin: auto;
     width: 75%;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px 4px rgba(128, 128, 128, 128);

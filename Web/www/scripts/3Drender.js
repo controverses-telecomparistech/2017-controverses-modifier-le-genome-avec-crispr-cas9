@@ -79,7 +79,7 @@ function initScene()
     outline_geom.vertices.push(new THREE.Vector3(box_width / 2, -box_height / 2, 0));
     outline_geom.vertices.push(new THREE.Vector3(-box_width / 2, -box_height / 2, 0));
     outline_geom.vertices.push(new THREE.Vector3(-box_width / 2, box_height / 2, 0));
-    var outline_mat = new THREE.LineBasicMaterial({color:0x4286f4, linewidth:5});
+    var outline_mat = new THREE.LineBasicMaterial({color:0x888888, linewidth:5});
 
     // On construit les Mesh des boîtes
     // On va afficher le texte sur un canvas qui sera ensuite utilisé comme texture par la boîte
@@ -90,7 +90,7 @@ function initScene()
         canvas.width = box_width * CANVAS_TO_BOX_FACTOR;
         canvas.height = box_height * CANVAS_TO_BOX_FACTOR;
         var ctx = canvas.getContext("2d");
-        ctx.font = text_size + "px Courier";
+        ctx.font = text_size + "px Nunito Sans";
         dialogBoxes[i] = new THREE.Group();
         // Fond gris
         ctx.fillStyle = box_bgcolor;
@@ -104,7 +104,7 @@ function initScene()
         else
         {
             // On a deux strings, c'est "Expertise scientifique"
-            var text_y = (canvas.height - text_size) / 2;
+            var text_y = (canvas.height - text_size / 2) / 2;
             for(var j = 0; j < 2; j++)
             {
                 var w = ctx.measureText(box_texts[i][j]).width;

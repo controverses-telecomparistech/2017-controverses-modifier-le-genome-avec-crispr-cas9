@@ -1,15 +1,21 @@
 html
 {
-    margin:0;
-    background:url("../images/background.png") no-repeat center center fixed;
+    background:url("../images/background.png");
+    word-wrap: break-word;
+    font-family: "Nunito Sans", sans-serif;
+    text-align: justify;
+    
+    background-color: rgb(60, 60, 60);
+    background-position: center;
     background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 body
 {
     overflow:hidden;
     padding-top: 10vh;
-    font-family: sans-serif;
     opacity: 0;
 }
 
@@ -26,6 +32,12 @@ body
     border-width: 1px;*/
     text-align: center;
     z-index: 5;
+}
+
+#title
+{
+    font-family: Monoton;
+    font-weight: 200;
 }
 
 #subtitle
@@ -66,8 +78,6 @@ body
 #introduction-box
 {
     float: left;
-    /* border-style: solid;*/
-    text-align: justify;
     margin-left: 2vw;
     max-height: 89vh;
     max-width: 50vw;
