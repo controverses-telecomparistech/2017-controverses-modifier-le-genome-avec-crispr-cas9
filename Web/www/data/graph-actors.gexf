@@ -129,7 +129,7 @@
       <node id="europe" label="Union Européenne">
         <viz:size value="13.0"></viz:size>
         <viz:position x="174.78958" y="-26.327353"></viz:position>
-        <viz:color r="133" g="133" b="133"></viz:color>
+        <viz:color r="173" g="0" b="24"></viz:color>
       </node>
       <node id="25" label="OPECST">
         <viz:size value="13.0"></viz:size>
