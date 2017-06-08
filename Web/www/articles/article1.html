@@ -7,18 +7,19 @@
   <script src="scripts/jquery.min.js"></script>
   <script src="scripts/sigma.min.js"></script>
   <script src="scripts/plugins/sigma.parsers.gexf.min.js"></script>
+  <script src="articles/graph_creation.js"></script>
   <link rel="stylesheet" href="articles/article1.css" />
 </head>
 <body>
   <!-- Affichage par onglets de l'arbre des débats, timeline et acteurs -->
   <div class="tabbed-content">
     <ul class="tabs">
-      <li class="tab-link current" data-tab="graph-container">Arbre des débats</li>
+      <li class="tab-link current" data-tab="debates-container">Arbre des débats</li>
       <li class="tab-link" data-tab="tab-timeline">Timeline</li>
-      <li class="tab-link" data-tab="tab3">Acteurs</li>
+      <li class="tab-link" data-tab="actors-container">Acteurs</li>
     </ul>
   
-    <div class="container tab-content current" id="graph-container">
+    <div class="container tab-content current" id="debates-container">
       <div id="texte_debat">
         <!-- Arbre des débats -->
 
@@ -125,7 +126,8 @@
       <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1GMFwVyMPHZshcQVo1ATTwScTCEhd2uqS8ilinvl2BKM&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' -webkit-allow-fullscreen -moz-allow-fullscreen allow-fullscreen frameborder='0'></iframe>
     </div>
     
-    <div class="tab-content" id="tab3">Content me dad</div>
+    <div class="container tab-content" id="actors-container">
+    </div>
   </div>
   
   <script>
@@ -148,45 +150,9 @@
     // ####
     var currentDiv;
 
-    setTimeout(function ()
-    {
-      var s = new sigma({
-      container: 'graph-container',
-      renderer: {
-      container: document.getElementById('graph-container'),
-      type: 'webgl'
-      },
-      settings: {
-      minNodeSize: 8,
-      maxNodeSize: 16
-      }
-      });
-      
-      sigma.parsers.gexf('data/graph-debates.gexf', s, function ()
-        {
-          s.refresh();
-          // On affiche les divs quand on clique sur les noeuds
-          s.bind("clickNode",
-            function (e)
-            {
-              currentDiv = $("#" + e.data.node.id);
-              if(currentDiv)
-              {
-                currentDiv.addClass("current");
-              }
-            }
-          ).bind("click", function ()
-            {
-              if(currentDiv)
-              {
-                currentDiv.removeClass("current");
-                currentDiv = undefined;
-              }
-            }
-          );
-        }
-      );
-    }, 700); // deux fois la durée de l'animation jQuery ColorBox pour être sûr, cf index.html !
+    // Graphe des débats
+    setTimeout(function() { createGraph("graph-debates.gexf", "debates-container"); }, 700); // deux fois la durée de l'animation jQuery ColorBox pour être sûr, cf index.html !
+    setTimeout(function() { createGraph("graph-actors.gexf", "actors-container"); }, 700);
   </script>
 </body>
 </html>

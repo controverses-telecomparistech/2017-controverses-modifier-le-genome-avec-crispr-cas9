@@ -44,7 +44,7 @@
       <node id="7" label="Science et Avenir">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-171.53877" y="313.7071"></viz:position>
-        <viz:color r="255" g="255" b="102"></viz:color>
+        <viz:color r="255" g="153" b="0"></viz:color>
       </node>
       <node id="8" label="La Croix">
         <viz:size value="13.0"></viz:size>
@@ -54,7 +54,7 @@
       <node id="9" label="Science et Nature">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-92.50625" y="296.42505"></viz:position>
-        <viz:color r="255" g="255" b="102"></viz:color>
+        <viz:color r="255" g="153" b="0"></viz:color>
       </node>
       <node id="10" label="Alliance VITA">
         <viz:size value="13.0"></viz:size>
@@ -104,7 +104,7 @@
       <node id="19" label="Emmanuelle Charpentier er Jennifer Doudna">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-24.02949" y="-373.309"></viz:position>
-        <viz:color r="255" g="255" b="102"></viz:color>
+        <viz:color r="255" g="153" b="0"></viz:color>
       </node>
       <node id="20" label="France">
         <viz:size value="13.0"></viz:size>
@@ -134,12 +134,12 @@
       <node id="25" label="OPECST">
         <viz:size value="13.0"></viz:size>
         <viz:position x="413.5433" y="-25.935732"></viz:position>
-        <viz:color r="255" g="255" b="102"></viz:color>
+        <viz:color r="255" g="153" b="0"></viz:color>
       </node>
       <node id="26" label="INSERM">
         <viz:size value="13.0"></viz:size>
         <viz:position x="355.75595" y="-98.467224"></viz:position>
-        <viz:color r="255" g="255" b="102"></viz:color>
+        <viz:color r="255" g="153" b="0"></viz:color>
       </node>
       <node id="27" label="CIA">
         <viz:size value="13.0"></viz:size>
