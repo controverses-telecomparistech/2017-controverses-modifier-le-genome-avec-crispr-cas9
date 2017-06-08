@@ -34,7 +34,6 @@ body
 }
 
 #cboxOverlay { visibility: visible; opacity: 1.0 !important; }
-#cboxContent { opacity: 0.9; }
 
 #cover
 {
@@ -87,10 +86,4 @@ body
     float: right;
     width: 47%;
     height: 95%;
-}
-
-@font-face
-{
-    font-family: "MyriadPro-Bold";
-    src: url("MyriadPro-Bold.otf");
 }
