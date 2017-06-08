@@ -44,7 +44,7 @@ ul.tabs li.current
     z-index: 3;
 }
 
-.debat
+.popup
 {
     display: none;
     position: absolute;
@@ -55,7 +55,7 @@ ul.tabs li.current
     padding-bottom: 7vh;
 }
 
-.debat.current
+.popup.current
 {
     display: initial;
     width: 75%;

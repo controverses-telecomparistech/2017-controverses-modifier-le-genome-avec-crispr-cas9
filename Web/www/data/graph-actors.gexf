@@ -31,77 +31,77 @@
         <viz:position x="177.3606" y="64.7027"></viz:position>
         <viz:color r="133" g="133" b="133"></viz:color>
       </node>
-      <node id="5" label="Le Monde">
+      <node id="leMonde" label="Le Monde">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-62.40786" y="214.19177"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
       </node>
-      <node id="6" label="Gènéthique">
+      <node id="genethique" label="Gènéthique">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-243.92506" y="181.13867"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="7" label="Science et Avenir">
+      <node id="scienceEtAvenir" label="Science et Avenir">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-171.53877" y="313.7071"></viz:position>
         <viz:color r="255" g="153" b="0"></viz:color>
       </node>
-      <node id="8" label="La Croix">
+      <node id="laCroix" label="La Croix">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-240.53629" y="267.3859"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="9" label="Science et Nature">
+      <node id="scienceEtNature" label="Science et Nature">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-92.50625" y="296.42505"></viz:position>
         <viz:color r="255" g="153" b="0"></viz:color>
       </node>
-      <node id="10" label="Alliance VITA">
+      <node id="vita" label="Alliance VITA">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-344.012" y="-119.90565"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="11" label="Stop OGM">
+      <node id="ogm" label="Stop OGM">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-262.54022" y="-143.17847"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="12" label="Fondation Jérôme Lejeune">
+      <node id="lejeune" label="Fondation Jérôme Lejeune">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-304.25983" y="20.270924"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="13" label="Guy Kastler">
+      <node id="kastler" label="Guy Kastler">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-364.44934" y="-39.01233"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="14" label="Edward Lanphier">
+      <node id="lanphier" label="Edward Lanphier">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-126.84581" y="-255.48318"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="15" label="Gilles-Éric Séralini">
+      <node id="seralini" label="Gilles-Éric Séralini">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-104.14687" y="-342.21887"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="16" label="Olivier Le Gall">
+      <node id="gall" label="Olivier Le Gall">
         <viz:size value="13.0"></viz:size>
         <viz:position x="46.64426" y="-192.82181"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
       </node>
-      <node id="17" label="Entreprises">
+      <node id="entreprises" label="Entreprises">
         <viz:size value="13.0"></viz:size>
         <viz:position x="54.392616" y="-346.14114"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
       </node>
-      <node id="18" label="Xingxu Huang">
+      <node id="huang" label="Xingxu Huang">
         <viz:size value="13.0"></viz:size>
         <viz:position x="89.76398" y="-273.2961"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
       </node>
-      <node id="19" label="Emmanuelle Charpentier er Jennifer Doudna">
+      <node id="charpentier" label="Emmanuelle Charpentier er Jennifer Doudna">
         <viz:size value="13.0"></viz:size>
         <viz:position x="-24.02949" y="-373.309"></viz:position>
         <viz:color r="255" g="153" b="0"></viz:color>
@@ -111,7 +111,7 @@
         <viz:position x="347.6177" y="-30.499573"></viz:position>
         <viz:color r="133" g="133" b="133"></viz:color>
       </node>
-      <node id="21" label="Grande-Bretagne">
+      <node id="gb" label="Grande-Bretagne">
         <viz:size value="13.0"></viz:size>
         <viz:position x="123.37613" y="137.50745"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
@@ -121,12 +121,12 @@
         <viz:position x="263.64655" y="237.36205"></viz:position>
         <viz:color r="133" g="133" b="133"></viz:color>
       </node>
-      <node id="23" label="Chine">
+      <node id="chine" label="Chine">
         <viz:size value="13.0"></viz:size>
         <viz:position x="262.79068" y="88.753555"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
       </node>
-      <node id="24" label="Union Européenne">
+      <node id="europe" label="Union Européenne">
         <viz:size value="13.0"></viz:size>
         <viz:position x="174.78958" y="-26.327353"></viz:position>
         <viz:color r="133" g="133" b="133"></viz:color>
@@ -136,17 +136,17 @@
         <viz:position x="413.5433" y="-25.935732"></viz:position>
         <viz:color r="255" g="153" b="0"></viz:color>
       </node>
-      <node id="26" label="INSERM">
+      <node id="inserm" label="INSERM">
         <viz:size value="13.0"></viz:size>
         <viz:position x="355.75595" y="-98.467224"></viz:position>
         <viz:color r="255" g="153" b="0"></viz:color>
       </node>
-      <node id="27" label="CIA">
+      <node id="cia" label="CIA">
         <viz:size value="13.0"></viz:size>
         <viz:position x="232.23112" y="297.8558"></viz:position>
         <viz:color r="173" g="0" b="24"></viz:color>
       </node>
-      <node id="28" label="USDA">
+      <node id="usda" label="USDA">
         <viz:size value="13.0"></viz:size>
         <viz:position x="321.89026" y="268.16064"></viz:position>
         <viz:color r="24" g="173" b="0"></viz:color>
@@ -157,30 +157,30 @@
       <edge id="1" source="0" target="2"></edge>
       <edge id="2" source="0" target="3"></edge>
       <edge id="3" source="0" target="4"></edge>
-      <edge id="4" source="2" target="5"></edge>
-      <edge id="5" source="2" target="6"></edge>
-      <edge id="6" source="2" target="7"></edge>
-      <edge id="7" source="2" target="8"></edge>
-      <edge id="8" source="2" target="9"></edge>
-      <edge id="9" source="1" target="10"></edge>
-      <edge id="10" source="1" target="11"></edge>
-      <edge id="11" source="1" target="12"></edge>
-      <edge id="13" source="1" target="13"></edge>
-      <edge id="14" source="3" target="14"></edge>
-      <edge id="15" source="3" target="15"></edge>
-      <edge id="16" source="3" target="16"></edge>
-      <edge id="17" source="3" target="17"></edge>
-      <edge id="18" source="3" target="18"></edge>
-      <edge id="19" source="3" target="19"></edge>
+      <edge id="4" source="2" target="leMonde"></edge>
+      <edge id="5" source="2" target="genethique"></edge>
+      <edge id="6" source="2" target="scienceEtAvenir"></edge>
+      <edge id="7" source="2" target="laCroix"></edge>
+      <edge id="8" source="2" target="scienceEtNature"></edge>
+      <edge id="9" source="1" target="vita"></edge>
+      <edge id="10" source="1" target="ogm"></edge>
+      <edge id="11" source="1" target="lejeune"></edge>
+      <edge id="13" source="1" target="kastler"></edge>
+      <edge id="14" source="3" target="lanphier"></edge>
+      <edge id="15" source="3" target="seralini"></edge>
+      <edge id="16" source="3" target="gall"></edge>
+      <edge id="17" source="3" target="entreprises"></edge>
+      <edge id="18" source="3" target="huang"></edge>
+      <edge id="19" source="3" target="charpentier"></edge>
       <edge id="20" source="4" target="20"></edge>
-      <edge id="21" source="4" target="21"></edge>
+      <edge id="21" source="4" target="gb"></edge>
       <edge id="22" source="4" target="22"></edge>
-      <edge id="23" source="4" target="23"></edge>
-      <edge id="24" source="4" target="24"></edge>
+      <edge id="23" source="4" target="chine"></edge>
+      <edge id="24" source="4" target="europe"></edge>
       <edge id="25" source="20" target="25"></edge>
-      <edge id="26" source="20" target="26"></edge>
-      <edge id="27" source="22" target="27"></edge>
-      <edge id="28" source="22" target="28"></edge>
+      <edge id="26" source="20" target="inserm"></edge>
+      <edge id="27" source="22" target="cia"></edge>
+      <edge id="28" source="22" target="usda"></edge>
     </edges>
   </graph>
 </gexf>
