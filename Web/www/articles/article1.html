@@ -276,8 +276,34 @@
 
         $(this).addClass('current');
         $("#"+tab_id).addClass('current');
-      })
+      });
+      
+      sigma.classes.graph.addMethod("neighbors", function (nodeId)
+        {
+          var k, neighbors = [], index = this.outNeighborsIndex[nodeId] || {};
 
+          for(k in index)
+            neighbors.push(this.nodesIndex[k]);
+
+          return neighbors;
+        }
+      );
+      
+      sigma.classes.graph.addMethod("invertNodeHidden", function (nodeId, forceHidden)
+        {
+          var node = this.nodesIndex[nodeId];
+          node.hidden = forceHidden ? true : !node.hidden;
+          if(node.hidden)
+          {
+            var edges = this.edgesArray;
+            for(var k = 0; k < edges.length; k++)
+            {
+              if(edges[k].source == nodeId)
+                this.invertNodeHidden(edges[k].target, true);
+            }
+          }
+        }
+      );
     });
     
     // ####
