@@ -14,7 +14,15 @@ function createGraph(file, container)
     
     sigma.parsers.gexf('data/' + file, s, function ()
         {
+            var nodes = s.graph.nodes();
+            
+            for(var nodeId in nodes)
+            {
+                if(nodes[nodeId].id != "0")
+                    nodes[nodeId].hidden = true;
+            }
             s.refresh();
+            
             // On affiche les divs quand on clique sur les noeuds
             s.bind("clickNode", function (e)
                 {
