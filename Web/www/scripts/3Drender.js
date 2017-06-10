@@ -93,8 +93,6 @@ $(document).ready(function ()
             canvases[i] = document.createElement("canvas");
             canvases[i].width = box_width * CANVAS_TO_BOX_FACTOR;
             canvases[i].height = box_height * CANVAS_TO_BOX_FACTOR;
-            var ctx = canvases[i].getContext("2d");
-            ctx.font = TEXT_SIZE + "px Nunito Sans";
             dialogBoxes[i] = new THREE.Group();
 
             // Les noms de toutes les boîtes commencent par "box" pour les retrouver plus tard
@@ -153,6 +151,7 @@ $(document).ready(function ()
         for(var i = 0; i < BOX_NUM; i++)
         {
             var ctx = canvases[i].getContext("2d");
+            ctx.font = TEXT_SIZE + "px Nunito Sans";
             ctx.fillStyle = box_bgcolor;
             ctx.fillRect(0, 0, canvases[i].width, canvases[i].height);
             ctx.fillStyle = "#000000";
