@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta charset="utf-8" />
 	<link rel="stylesheet" href="styles/cripr.css" />
+	<link rel="stylesheet" href="articles/article5.css" />
 </head>
 
 <body>
-        <div id="introduction">
-          <h1><center> ENTRETIENS <center></h1>
-          Deux entretiens ont été rélisés pour l'étude de cette controverse :<br>
-          <span class="tabulation">- Un entretien avec Marie-Jo Thiel, Professeure d’Éthique et Bioéthique à l’université de Strasbourg, consultable <A href="fichiers/entretien_mariejo.pdf">ici</A>,
-          <span class="tabulation">- Un entretien avec Aude Bernheim, Doctorante en Génomique Evolutive des Microbes et Biologie de Synthèse à l’institut Pasteur, consultable <A href="fichiers/entretien_aude.pdf">ici</A>.<br>
+  <div id="introduction">
+    <h1><center> ENTRETIENS <center></h1>
+    Deux entretiens ont été rélisés pour l'étude de cette controverse :<br>
+    <span class="tabulation">- Un entretien avec Marie-Jo Thiel, Professeure d’Éthique et Bioéthique à l’université de Strasbourg, consultable <A href="fichiers/entretien_mariejo.pdf">ici</A>,
+    <span class="tabulation">- Un entretien avec Aude Bernheim, Doctorante en Génomique Evolutive des Microbes et Biologie de Synthèse à l’institut Pasteur, consultable <A href="fichiers/entretien_aude.pdf">ici</A>.<br>
 
-        </div>
+  </div>
+  
+  <div class="question">
+    Question 1
+    <div class="answer">
+      <p>Réponse 1</p>
+    </div>
+  </div>
+  <div class="question">
+    Question 2
+    <div class="answer">
+      <p>Réponse 2</p>
+    </div>
+  </div>
+  
+  <script>
+    var qs = document.getElementsByClassName("question");
+    for(var i = 0; i < qs.length; i++)
+      qs[i].addEventListener("click", function (e)
+        {
+          var current = document.getElementsByClassName("current");
+          for(var j = 0; j < current.length; j++)
+            current[j].classList.remove("current");
+          e.target.classList.toggle("current");
+        }
+      );
+  </script>
 </body>
 </html>
