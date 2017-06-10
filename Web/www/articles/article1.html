@@ -122,8 +122,8 @@
       </div>
     </div>
     
+    <!-- On rajoute le contenu quand la ColorBox est dimensionnée -->
     <div class="tab-content" id="tab-timeline" style="width: 98%;">
-      <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1GMFwVyMPHZshcQVo1ATTwScTCEhd2uqS8ilinvl2BKM&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' -webkit-allow-fullscreen -moz-allow-fullscreen allow-fullscreen frameborder='0'></iframe>
     </div>
     
     <div class="container tab-content" id="actors-container">
@@ -318,8 +318,12 @@
     var currentDiv;
 
     // Graphe des débats
-    setTimeout(function() { createGraph("graph-debates.gexf", "debates-container"); }, 700); // deux fois la durée de l'animation jQuery ColorBox pour être sûr, cf index.html !
-    setTimeout(function() { createGraph("graph-actors.gexf", "actors-container"); }, 700);
+    setTimeout(function()
+      {
+        createGraph("graph-debates.gexf", "debates-container"); // deux fois la durée de l'animation jQuery ColorBox pour être sûr, cf index.html !
+        createGraph("graph-actors.gexf", "actors-container");
+        $("#tab-timeline").append("<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1GMFwVyMPHZshcQVo1ATTwScTCEhd2uqS8ilinvl2BKM&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' -webkit-allow-fullscreen -moz-allow-fullscreen allow-fullscreen frameborder='0'></iframe>");
+      }, 700);
   </script>
 </body>
 </html>
