@@ -1,0 +1,14 @@
+.question
+{
+    cursor: pointer;
+    border-style: solid;
+}
+.answer
+{
+    display: none;
+}
+
+.current .answer
+{
+    display:initial;
+}
